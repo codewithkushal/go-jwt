@@ -12,6 +12,7 @@ import (
 var jwtKey = []byte("your_secret_key")
 
 type Claims struct {
+	// this username should be loaded from database so a unique username can be used it can be either email or username or which ever is unique
 	Username string `json:"username"`
 	jwt.StandardClaims
 }
@@ -33,7 +34,9 @@ func main() {
 			},
 		}
 
+		// Declare the token with the algorithm used for signing, and the claims
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
+		// Create the JWT string and store it in the response object and also database - this is the token that will be used for authentication
 		tokenString, err := token.SignedString(jwtKey)
 		if err != nil {
 			c.AbortWithStatus(http.StatusInternalServerError)
