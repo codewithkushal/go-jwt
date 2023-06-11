@@ -18,7 +18,6 @@ type Claims struct {
 }
 
 func main() {
-	// Create a new Gin router
 	router := gin.Default()
 
 	// Route handler for generating a JWT token
