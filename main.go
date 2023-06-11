@@ -29,7 +29,7 @@ func main() {
 			StandardClaims: jwt.StandardClaims{
 				// add 24 hrs to current time
 				// Token expires in 24 hours
-				ExpiresAt: time.Now().Add(time.Second * 10).Unix(),
+				ExpiresAt: time.Now().Add(time.Hour * 24).Unix(),
 			},
 		}
 
